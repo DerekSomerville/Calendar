@@ -29,13 +29,13 @@ public class AppDatabaseConnection implements AppDatabase.AppDataSource {
     }
 
     public List<List<String>> getDataFromTable(String tableName, String[] columnNames){
-        List<List<String>> queryData = null;
-        ArrayList<String> queryRow = null;
+        List<List<String>> queryData = new ArrayList<List<String>>();
+        ArrayList<String> queryRow = new ArrayList<String>();
         try {
             Statement databaseStatement = this.databaseConnection.createStatement();
             ResultSet queryResultSet = databaseStatement.executeQuery(getQuery(tableName));
             while (queryResultSet.next()) {
-                queryRow = null;
+                queryRow = new ArrayList<String>();;
                 for (String columnName:columnNames){
                     queryRow.add(queryResultSet.getString(columnName));
                 }
