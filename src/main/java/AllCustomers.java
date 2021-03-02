@@ -11,6 +11,10 @@ public class AllCustomers {
         refresh();
     }
 
+    public Customer[] getListOfCustomers() {
+        return listOfCustomers;
+    }
+
     public static String tableName = "customer";
     public static String[] customerFields = {"emailAddress","firstName","lastName","password"};
 
