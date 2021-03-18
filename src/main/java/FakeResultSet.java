@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-public class StubResultSet implements ResultSet{
+public class FakeResultSet implements ResultSet{
 
 
     private int counter = 0;
@@ -18,7 +18,7 @@ public class StubResultSet implements ResultSet{
     private List<List<String>> rawData;
     private String[] columnFields;
 
-    StubResultSet(List<List<String>> rawData, String[] columnFields){
+    FakeResultSet(List<List<String>> rawData, String[] columnFields){
         this.rawData = rawData;
         this.columnFields = columnFields;
         this.maxRows = rawData.size();

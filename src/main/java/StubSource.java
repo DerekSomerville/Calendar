@@ -18,4 +18,9 @@ public class StubSource implements  DataSource{
         return queryData;
     }
 
+    @Override
+    public List<String> getDataFromTableWhere(String tableName, String[] columnNames,String whereField, String filter){
+        return getDataFromTable(tableName,columnNames).get(0);
+    }
+
 }

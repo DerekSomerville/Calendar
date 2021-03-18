@@ -17,6 +17,12 @@ public class DatabaseSource implements DataSource{
         return "Select * from " + tableName;
     }
 
+    protected String getSelectQueryWhere(String tableName, String whereFeild, String filter){
+        String selectStatement = getSelectQuery(tableName);
+        selectStatement += " where " + whereFeild + " = \"" + filter + "\"";
+        return selectStatement;
+    }
+
     private List<List<String>> getDataFromTable(ResultSet resultSet, String tableName, String[] columnNames) {
         List<List<String>> queryData = new ArrayList<List<String>>();
         ArrayList<String> queryRow = new ArrayList<String>();
@@ -38,6 +44,12 @@ public class DatabaseSource implements DataSource{
         ResultSet resultSet = dataExecute.executeSelect(getSelectQuery(tableName));
         List<List<String>> queryData = getDataFromTable(resultSet,tableName,columnNames);
         return queryData;
+    }
+
+    public List<String> getDataFromTableWhere( String tableName, String[] columnNames,String whereField, String filter) {
+        ResultSet resultSet = dataExecute.executeSelect(getSelectQueryWhere(tableName,whereField,filter));
+        List<List<String>> queryData = getDataFromTable(resultSet,tableName,columnNames);
+        return queryData.get(0);
     }
 
 }

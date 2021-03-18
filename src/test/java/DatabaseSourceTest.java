@@ -31,4 +31,15 @@ class DatabaseSourceTest {
     void getSelectQuery(){
         assertEquals("Select * from customer",databaseSource.getSelectQuery(AllCustomers.tableName) );
     }
+
+    @Test
+    void getSelectQueryTank(){
+        assertTrue(true);
+        assertEquals("Select * from tank",databaseSource.getSelectQuery("tank") );
+    }
+
+    @Test
+    void getSelectQueryWhere(){
+        assertEquals("Select * from customer where emailAddress = \"derek.somerville@glasgow.ac.uk\"",databaseSource.getSelectQueryWhere(AllCustomers.tableName,"emailAddress","derek.somerville@glasgow.ac.uk"));
+    }
 }
